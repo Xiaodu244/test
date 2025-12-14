@@ -1,7 +1,7 @@
 <html lang="zh-CN"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>随机座位生成器</title>
+    <title>随机座位生成器（规则锁定版）</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
     <style>
@@ -386,12 +386,12 @@
                 </button>
             </div>
             <div class="time-display">
-                当前时间: <span id="currentTime">2025/12/14 18:04:47</span>
+                当前时间: <span id="currentTime">2025/12/14 18:10:31</span>
             </div>
         </div>
 
         <!-- Seat Grid -->
-        <div class="seat-container" id="seatContainer"><div class="seat">包博文</div><div class="seat">简文曦</div><div class="seat">刘沛凝</div><div class="seat">何雨桀</div><div class="seat">冉高越扬</div><div class="seat">李广一</div><div class="seat">陈芃锦</div><div class="seat">陈觉熠</div><div class="seat">梁允泽</div><div class="seat">王云翔</div><div class="seat">张恒烨</div><div class="seat">梁洪滔</div><div class="seat">谭诗蒙</div><div class="seat">伏俊雯</div><div class="seat">陈俊池</div><div class="seat">潘丽烨</div><div class="seat">胡家源</div><div class="seat">袁伟杰</div><div class="seat">王弘毅</div><div class="seat">黄文桢</div><div class="seat">田添</div><div class="seat">龙泳希</div><div class="seat">吴臻</div><div class="seat">陈俞霖</div><div class="seat">汪孝通</div><div class="seat">王凡予</div><div class="seat">万承源</div><div class="seat">王一婷</div><div class="seat">杨鹏航</div><div class="seat">黄戟</div><div class="seat">郭文熙</div><div class="seat">张元兮</div><div class="seat">冯悠然</div><div class="seat">蔡松阳</div><div class="seat">何立林</div><div class="seat">刘昱同</div><div class="seat">秦梓航</div><div class="seat">邹雨成</div><div class="seat">马梓铭</div><div class="seat">邹谨羽</div><div class="seat">张庭铭</div><div class="seat">乔兰惠</div><div class="seat">李芷漩</div><div class="seat">敖寅轩</div><div class="seat">常凯迪</div><div class="seat">谭力豪</div><div class="seat">杨皓然</div><div class="seat">高启航</div><div class="seat fixed-seat">颜屿蘅</div><div class="seat fixed-seat">吴优</div><div class="seat">潘慧妍</div><div class="seat">范邵凯</div><div class="seat">赵苓淇</div><div class="seat">李弘毅</div><div class="seat">何俊杰</div><div class="seat">杜泓骏</div></div>
+        <div class="seat-container" id="seatContainer"><div class="seat">袁伟杰</div><div class="seat">黄戟</div><div class="seat">乔兰惠</div><div class="seat">邹谨羽</div><div class="seat">吴臻</div><div class="seat">郭文熙</div><div class="seat">李芷漩</div><div class="seat">梁洪滔</div><div class="seat">伏俊雯</div><div class="seat">黄文桢</div><div class="seat">陈俊池</div><div class="seat">张恒烨</div><div class="seat">何立林</div><div class="seat">蔡松阳</div><div class="seat">胡家源</div><div class="seat">常凯迪</div><div class="seat">潘丽烨</div><div class="seat">包博文</div><div class="seat">简文曦</div><div class="seat">田添</div><div class="seat">马梓铭</div><div class="seat">杨鹏航</div><div class="seat">何俊杰</div><div class="seat">谭诗蒙</div><div class="seat">谭力豪</div><div class="seat">陈芃锦</div><div class="seat">冯悠然</div><div class="seat">刘昱同</div><div class="seat">赵苓淇</div><div class="seat">龙泳希</div><div class="seat">高启航</div><div class="seat">王凡予</div><div class="seat">范邵凯</div><div class="seat">冉高越扬</div><div class="seat">邹雨成</div><div class="seat">杜泓骏</div><div class="seat">张元兮</div><div class="seat">陈觉熠</div><div class="seat">刘沛凝</div><div class="seat">秦梓航</div><div class="seat">潘慧妍</div><div class="seat">汪孝通</div><div class="seat">李广一</div><div class="seat">王一婷</div><div class="seat">王弘毅</div><div class="seat">张庭铭</div><div class="seat">何雨桀</div><div class="seat">陈俞霖</div><div class="seat fixed-seat">颜屿蘅</div><div class="seat fixed-seat">吴优</div><div class="seat">敖寅轩</div><div class="seat">王云翔</div><div class="seat">万承源</div><div class="seat">梁允泽</div><div class="seat">杨皓然</div><div class="seat">李弘毅</div></div>
     </div>
 
     <!-- History Modal -->
@@ -483,18 +483,36 @@
                         <div id="frontBackRestrictionList" class="restriction-list"></div>
                     </div>
 
+                    <!-- 强制同桌规则设置 -->
+                    <div class="setting-section">
+                        <div class="setting-title">4. 强制同桌规则（必须坐在一起）</div>
+                        <div class="restriction-pair">
+                            <select id="deskmateStudent1" class="student-selector">
+                                <option value="">选择学生A</option>
+                            <option value="敖寅轩">敖寅轩</option><option value="包博文">包博文</option><option value="蔡松阳">蔡松阳</option><option value="常凯迪">常凯迪</option><option value="陈觉熠">陈觉熠</option><option value="陈俊池">陈俊池</option><option value="陈芃锦">陈芃锦</option><option value="陈俞霖">陈俞霖</option><option value="杜泓骏">杜泓骏</option><option value="范邵凯">范邵凯</option><option value="冯悠然">冯悠然</option><option value="伏俊雯">伏俊雯</option><option value="高启航">高启航</option><option value="郭文熙">郭文熙</option><option value="何俊杰">何俊杰</option><option value="何立林">何立林</option><option value="何雨桀">何雨桀</option><option value="胡家源">胡家源</option><option value="黄戟">黄戟</option><option value="黄文桢">黄文桢</option><option value="简文曦">简文曦</option><option value="李广一">李广一</option><option value="李弘毅">李弘毅</option><option value="李芷漩">李芷漩</option><option value="梁洪滔">梁洪滔</option><option value="梁允泽">梁允泽</option><option value="刘沛凝">刘沛凝</option><option value="刘昱同">刘昱同</option><option value="龙泳希">龙泳希</option><option value="马梓铭">马梓铭</option><option value="潘慧妍">潘慧妍</option><option value="潘丽烨">潘丽烨</option><option value="乔兰惠">乔兰惠</option><option value="秦梓航">秦梓航</option><option value="冉高越扬">冉高越扬</option><option value="谭力豪">谭力豪</option><option value="谭诗蒙">谭诗蒙</option><option value="田添">田添</option><option value="万承源">万承源</option><option value="汪孝通">汪孝通</option><option value="王凡予">王凡予</option><option value="王弘毅">王弘毅</option><option value="王一婷">王一婷</option><option value="王云翔">王云翔</option><option value="吴优">吴优</option><option value="吴臻">吴臻</option><option value="颜屿蘅">颜屿蘅</option><option value="杨皓然">杨皓然</option><option value="杨鹏航">杨鹏航</option><option value="袁伟杰">袁伟杰</option><option value="张恒烨">张恒烨</option><option value="张庭铭">张庭铭</option><option value="张元兮">张元兮</option><option value="赵苓淇">赵苓淇</option><option value="邹谨羽">邹谨羽</option><option value="邹雨成">邹雨成</option></select>
+                            <select id="deskmateStudent2" class="student-selector">
+                                <option value="">选择学生B</option>
+                            <option value="敖寅轩">敖寅轩</option><option value="包博文">包博文</option><option value="蔡松阳">蔡松阳</option><option value="常凯迪">常凯迪</option><option value="陈觉熠">陈觉熠</option><option value="陈俊池">陈俊池</option><option value="陈芃锦">陈芃锦</option><option value="陈俞霖">陈俞霖</option><option value="杜泓骏">杜泓骏</option><option value="范邵凯">范邵凯</option><option value="冯悠然">冯悠然</option><option value="伏俊雯">伏俊雯</option><option value="高启航">高启航</option><option value="郭文熙">郭文熙</option><option value="何俊杰">何俊杰</option><option value="何立林">何立林</option><option value="何雨桀">何雨桀</option><option value="胡家源">胡家源</option><option value="黄戟">黄戟</option><option value="黄文桢">黄文桢</option><option value="简文曦">简文曦</option><option value="李广一">李广一</option><option value="李弘毅">李弘毅</option><option value="李芷漩">李芷漩</option><option value="梁洪滔">梁洪滔</option><option value="梁允泽">梁允泽</option><option value="刘沛凝">刘沛凝</option><option value="刘昱同">刘昱同</option><option value="龙泳希">龙泳希</option><option value="马梓铭">马梓铭</option><option value="潘慧妍">潘慧妍</option><option value="潘丽烨">潘丽烨</option><option value="乔兰惠">乔兰惠</option><option value="秦梓航">秦梓航</option><option value="冉高越扬">冉高越扬</option><option value="谭力豪">谭力豪</option><option value="谭诗蒙">谭诗蒙</option><option value="田添">田添</option><option value="万承源">万承源</option><option value="汪孝通">汪孝通</option><option value="王凡予">王凡予</option><option value="王弘毅">王弘毅</option><option value="王一婷">王一婷</option><option value="王云翔">王云翔</option><option value="吴优">吴优</option><option value="吴臻">吴臻</option><option value="颜屿蘅">颜屿蘅</option><option value="杨皓然">杨皓然</option><option value="杨鹏航">杨鹏航</option><option value="袁伟杰">袁伟杰</option><option value="张恒烨">张恒烨</option><option value="张庭铭">张庭铭</option><option value="张元兮">张元兮</option><option value="赵苓淇">赵苓淇</option><option value="邹谨羽">邹谨羽</option><option value="邹雨成">邹雨成</option></select>
+                        </div>
+                        <button class="add-restriction-btn" onclick="addDeskmateRestriction()">添加强制同桌</button>
+                        <div id="deskmateRestrictionList" class="restriction-list"><div class="restriction-item">
+                        <span>包博文 和 潘丽烨 必须坐同桌</span>
+                        <button class="remove-btn" onclick="removeDeskmateRestriction(0)">删除</button>
+                    </div></div>
+                    </div>
+
                     <!-- 固定座位设置 -->
                     <div class="setting-section">
-                        <div class="setting-title">4. 固定座位</div>
+                        <div class="setting-title">5. 固定座位</div>
                         <select id="fixedSeatStudent" class="student-selector">
                             <option value="">选择学生</option>
                         <option value="敖寅轩">敖寅轩</option><option value="包博文">包博文</option><option value="蔡松阳">蔡松阳</option><option value="常凯迪">常凯迪</option><option value="陈觉熠">陈觉熠</option><option value="陈俊池">陈俊池</option><option value="陈芃锦">陈芃锦</option><option value="陈俞霖">陈俞霖</option><option value="杜泓骏">杜泓骏</option><option value="范邵凯">范邵凯</option><option value="冯悠然">冯悠然</option><option value="伏俊雯">伏俊雯</option><option value="高启航">高启航</option><option value="郭文熙">郭文熙</option><option value="何俊杰">何俊杰</option><option value="何立林">何立林</option><option value="何雨桀">何雨桀</option><option value="胡家源">胡家源</option><option value="黄戟">黄戟</option><option value="黄文桢">黄文桢</option><option value="简文曦">简文曦</option><option value="李广一">李广一</option><option value="李弘毅">李弘毅</option><option value="李芷漩">李芷漩</option><option value="梁洪滔">梁洪滔</option><option value="梁允泽">梁允泽</option><option value="刘沛凝">刘沛凝</option><option value="刘昱同">刘昱同</option><option value="龙泳希">龙泳希</option><option value="马梓铭">马梓铭</option><option value="潘慧妍">潘慧妍</option><option value="潘丽烨">潘丽烨</option><option value="乔兰惠">乔兰惠</option><option value="秦梓航">秦梓航</option><option value="冉高越扬">冉高越扬</option><option value="谭力豪">谭力豪</option><option value="谭诗蒙">谭诗蒙</option><option value="田添">田添</option><option value="万承源">万承源</option><option value="汪孝通">汪孝通</option><option value="王凡予">王凡予</option><option value="王弘毅">王弘毅</option><option value="王一婷">王一婷</option><option value="王云翔">王云翔</option><option value="吴优">吴优</option><option value="吴臻">吴臻</option><option value="颜屿蘅">颜屿蘅</option><option value="杨皓然">杨皓然</option><option value="杨鹏航">杨鹏航</option><option value="袁伟杰">袁伟杰</option><option value="张恒烨">张恒烨</option><option value="张庭铭">张庭铭</option><option value="张元兮">张元兮</option><option value="赵苓淇">赵苓淇</option><option value="邹谨羽">邹谨羽</option><option value="邹雨成">邹雨成</option></select>
                         <div id="fixedSeatGrid" class="fixed-seat-grid"><div class="fixed-seat-item" data-position="0">1行1列</div><div class="fixed-seat-item" data-position="1">1行2列</div><div class="fixed-seat-item" data-position="2">1行3列</div><div class="fixed-seat-item" data-position="3">1行4列</div><div class="fixed-seat-item" data-position="4">1行5列</div><div class="fixed-seat-item" data-position="5">1行6列</div><div class="fixed-seat-item" data-position="6">1行7列</div><div class="fixed-seat-item" data-position="7">1行8列</div><div class="fixed-seat-item" data-position="8">2行1列</div><div class="fixed-seat-item" data-position="9">2行2列</div><div class="fixed-seat-item" data-position="10">2行3列</div><div class="fixed-seat-item" data-position="11">2行4列</div><div class="fixed-seat-item" data-position="12">2行5列</div><div class="fixed-seat-item" data-position="13">2行6列</div><div class="fixed-seat-item" data-position="14">2行7列</div><div class="fixed-seat-item" data-position="15">2行8列</div><div class="fixed-seat-item" data-position="16">3行1列</div><div class="fixed-seat-item" data-position="17">3行2列</div><div class="fixed-seat-item" data-position="18">3行3列</div><div class="fixed-seat-item" data-position="19">3行4列</div><div class="fixed-seat-item" data-position="20">3行5列</div><div class="fixed-seat-item" data-position="21">3行6列</div><div class="fixed-seat-item" data-position="22">3行7列</div><div class="fixed-seat-item" data-position="23">3行8列</div><div class="fixed-seat-item" data-position="24">4行1列</div><div class="fixed-seat-item" data-position="25">4行2列</div><div class="fixed-seat-item" data-position="26">4行3列</div><div class="fixed-seat-item" data-position="27">4行4列</div><div class="fixed-seat-item" data-position="28">4行5列</div><div class="fixed-seat-item" data-position="29">4行6列</div><div class="fixed-seat-item" data-position="30">4行7列</div><div class="fixed-seat-item" data-position="31">4行8列</div><div class="fixed-seat-item" data-position="32">5行1列</div><div class="fixed-seat-item" data-position="33">5行2列</div><div class="fixed-seat-item" data-position="34">5行3列</div><div class="fixed-seat-item" data-position="35">5行4列</div><div class="fixed-seat-item" data-position="36">5行5列</div><div class="fixed-seat-item" data-position="37">5行6列</div><div class="fixed-seat-item" data-position="38">5行7列</div><div class="fixed-seat-item" data-position="39">5行8列</div><div class="fixed-seat-item" data-position="40">6行1列</div><div class="fixed-seat-item" data-position="41">6行2列</div><div class="fixed-seat-item" data-position="42">6行3列</div><div class="fixed-seat-item" data-position="43">6行4列</div><div class="fixed-seat-item" data-position="44">6行5列</div><div class="fixed-seat-item" data-position="45">6行6列</div><div class="fixed-seat-item" data-position="46">6行7列</div><div class="fixed-seat-item" data-position="47">6行8列</div><div class="fixed-seat-item active" data-position="48">颜屿蘅</div><div class="fixed-seat-item active" data-position="49">吴优</div><div class="fixed-seat-item" data-position="50">7行3列</div><div class="fixed-seat-item" data-position="51">7行4列</div><div class="fixed-seat-item" data-position="52">7行5列</div><div class="fixed-seat-item" data-position="53">7行6列</div><div class="fixed-seat-item" data-position="54">7行7列</div><div class="fixed-seat-item" data-position="55">7行8列</div></div>
                         <div id="fixedSeatList" class="restriction-list"><div class="restriction-item">
-                        <span>颜屿蘅 固定在7行1列</span>
+                        <span>吴优 固定在7行2列</span>
                         <button class="remove-btn" onclick="removeFixedSeat(0)">删除</button>
                     </div><div class="restriction-item">
-                        <span>吴优 固定在7行2列</span>
+                        <span>颜屿蘅 固定在7行1列</span>
                         <button class="remove-btn" onclick="removeFixedSeat(1)">删除</button>
                     </div></div>
                     </div>
@@ -534,7 +552,7 @@
     </div>
 
     <!-- Notification -->
-    <div id="notification" class="notification success show">所有设置已保存并生效</div>
+    <div id="notification" class="notification success">所有设置已保存并生效</div>
 
     <script>
         // ======================== 核心配置 ========================
@@ -544,14 +562,20 @@
     "rowRestrictions": [],
     "adjacentRestrictions": [],
     "frontBackRestrictions": [],
-    "fixedSeats": [
+    "deskmateRestrictions": [
         {
-            "student": "颜屿蘅",
-            "position": 48
-        },
+            "student1": "包博文",
+            "student2": "潘丽烨"
+        }
+    ],
+    "fixedSeats": [
         {
             "student": "吴优",
             "position": 49
+        },
+        {
+            "student": "颜屿蘅",
+            "position": 48
         }
     ]
 };
@@ -574,6 +598,7 @@
             rowRestrictions: [],    
             adjacentRestrictions: [], 
             frontBackRestrictions: [], 
+            deskmateRestrictions: [], // 新增：强制同桌规则
             fixedSeats: []          
         };
 
@@ -632,6 +657,8 @@
                 'adjacentStudent2',
                 'frontBackStudent1',
                 'frontBackStudent2',
+                'deskmateStudent1', // 新增：强制同桌学生A
+                'deskmateStudent2', // 新增：强制同桌学生B
                 'fixedSeatStudent'
             ];
 
@@ -778,6 +805,37 @@
             showNotification('前后桌限制已添加');
         }
 
+        // 新增：添加强制同桌规则
+        function addDeskmateRestriction() {
+            const student1 = document.getElementById('deskmateStudent1').value;
+            const student2 = document.getElementById('deskmateStudent2').value;
+            
+            if (!student1 || !student2 || student1 === student2) {
+                showNotification('请选择两个不同的学生', 'error');
+                return;
+            }
+
+            // 检查是否已存在
+            const exists = settings.deskmateRestrictions.some(r => 
+                (r.student1 === student1 && r.student2 === student2) || 
+                (r.student1 === student2 && r.student2 === student1)
+            );
+            
+            if (exists) {
+                showNotification('该同桌规则已存在', 'error');
+                return;
+            }
+
+            // 添加新的强制同桌规则
+            settings.deskmateRestrictions.push({ student1, student2 });
+            
+            // 更新UI
+            renderRestrictionLists();
+            document.getElementById('deskmateStudent1').value = '';
+            document.getElementById('deskmateStudent2').value = '';
+            showNotification('强制同桌规则已添加');
+        }
+
         // 渲染限制列表
         function renderRestrictionLists() {
             // 渲染行限制列表
@@ -825,6 +883,21 @@
                 });
             }
 
+            // 新增：渲染强制同桌规则列表
+            const deskmateList = document.getElementById('deskmateRestrictionList');
+            if (deskmateList) {
+                deskmateList.innerHTML = '';
+                settings.deskmateRestrictions.forEach((r, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'restriction-item';
+                    item.innerHTML = `
+                        <span>${r.student1} 和 ${r.student2} 必须坐同桌</span>
+                        <button class="remove-btn" onclick="removeDeskmateRestriction(${index})">删除</button>
+                    `;
+                    deskmateList.appendChild(item);
+                });
+            }
+
             // 渲染固定座位列表
             const fixedList = document.getElementById('fixedSeatList');
             if (fixedList) {
@@ -864,6 +937,13 @@
             showNotification('前后桌限制已删除');
         }
 
+        // 新增：删除强制同桌规则
+        function removeDeskmateRestriction(index) {
+            settings.deskmateRestrictions.splice(index, 1);
+            renderRestrictionLists();
+            showNotification('强制同桌规则已删除');
+        }
+
         // 删除固定座位
         function removeFixedSeat(index) {
             settings.fixedSeats.splice(index, 1);
@@ -873,7 +953,7 @@
         }
 
         // ======================== 核心功能 ========================
-        // 生成随机座位（核心逻辑）
+        // 生成随机座位（核心逻辑，新增强制同桌规则处理）
         function generateRandomSeats() {
             // 创建座位数组
             let newSeats = Array(56).fill(null);
@@ -883,19 +963,77 @@
                 newSeats[fixed.position] = fixed.student;
             });
             
-            // 获取剩余需要分配的学生
+            // 第二步：处理强制同桌规则（优先级最高）
+            const deskmatePairs = [...settings.deskmateRestrictions];
+            const deskmateStudents = [];
+            
+            // 为每对强制同桌的学生分配相邻座位
+            deskmatePairs.forEach(pair => {
+                const { student1, student2 } = pair;
+                
+                // 检查是否已有固定座位
+                const student1Pos = settings.fixedSeats.find(f => f.student === student1)?.position;
+                const student2Pos = settings.fixedSeats.find(f => f.student === student2)?.position;
+                
+                if (student1Pos !== undefined && student2Pos !== undefined) {
+                    // 两个学生都有固定座位，跳过
+                    deskmateStudents.push(student1, student2);
+                    return;
+                }
+                
+                // 寻找可用的相邻座位对
+                const availablePairs = [];
+                for (let i = 0; i < 56; i++) {
+                    // 跳过已有固定座位的位置
+                    if (newSeats[i] !== null) continue;
+                    
+                    // 检查右侧是否有相邻座位
+                    const col = i % 8;
+                    if (col < 7) {
+                        const rightPos = i + 1;
+                        if (newSeats[rightPos] === null) {
+                            availablePairs.push([i, rightPos]);
+                        }
+                    }
+                }
+                
+                // 随机选择一个座位对分配给同桌
+                if (availablePairs.length > 0) {
+                    const [pos1, pos2] = availablePairs[Math.floor(Math.random() * availablePairs.length)];
+                    
+                    // 随机决定谁坐左边谁坐右边
+                    if (Math.random() > 0.5) {
+                        newSeats[pos1] = student1;
+                        newSeats[pos2] = student2;
+                    } else {
+                        newSeats[pos1] = student2;
+                        newSeats[pos2] = student1;
+                    }
+                    
+                    deskmateStudents.push(student1, student2);
+                }
+            });
+            
+            // 获取剩余需要分配的学生（排除固定座位和强制同桌的学生）
             let availableStudents = [...students];
             settings.fixedSeats.forEach(fixed => {
                 const idx = availableStudents.indexOf(fixed.student);
                 if (idx !== -1) availableStudents.splice(idx, 1);
             });
+            deskmateStudents.forEach(student => {
+                const idx = availableStudents.indexOf(student);
+                if (idx !== -1) availableStudents.splice(idx, 1);
+            });
             
-            // 第二步：应用行限制，先放置有行限制的学生
+            // 第三步：应用行限制，放置有行限制的学生
             settings.rowRestrictions.forEach(restriction => {
-                if (!availableStudents.includes(restriction.student)) return;
+                const { student, row } = restriction;
+                
+                // 跳过已分配的学生
+                if (!availableStudents.includes(student)) return;
                 
                 // 找到该行的空位置
-                const rowStart = restriction.row * 8;
+                const rowStart = row * 8;
                 const rowEnd = rowStart + 8;
                 const emptyPositions = [];
                 
@@ -908,15 +1046,15 @@
                 // 随机选择一个位置放置
                 if (emptyPositions.length > 0) {
                     const randomPos = emptyPositions[Math.floor(Math.random() * emptyPositions.length)];
-                    newSeats[randomPos] = restriction.student;
+                    newSeats[randomPos] = student;
                     
                     // 从可用学生列表中移除
-                    const idx = availableStudents.indexOf(restriction.student);
+                    const idx = availableStudents.indexOf(student);
                     if (idx !== -1) availableStudents.splice(idx, 1);
                 }
             });
             
-            // 第三步：随机分配剩余学生，同时应用相邻和前后桌限制
+            // 第四步：随机分配剩余学生，同时应用相邻和前后桌限制
             while (availableStudents.length > 0) {
                 // 随机选择一个空位置
                 const emptyPositions = [];
@@ -933,7 +1071,7 @@
                 for (let i = 0; i < availableStudents.length; i++) {
                     const student = availableStudents[i];
                     
-                    // 检查相邻限制
+                    // 检查相邻限制和前后桌限制
                     if (!checkAdjacentRestriction(newSeats, randomPos, student) &&
                         !checkFrontBackRestriction(newSeats, randomPos, student)) {
                         
@@ -1019,7 +1157,7 @@
             return false; // 符合限制
         }
 
-        // 渲染座位
+        // 渲染座位（移除同桌标记，仅保留固定座位标记）
         function renderSeats() {
             const container = document.getElementById('seatContainer');
             container.innerHTML = '';
@@ -1028,7 +1166,7 @@
                 const seat = document.createElement('div');
                 seat.className = 'seat';
                 
-                // 标记固定座位
+                // 仅标记固定座位
                 if (settings.fixedSeats.some(f => f.position === index)) {
                     seat.classList.add('fixed-seat');
                 }
@@ -1068,12 +1206,13 @@
             // 读取当前HTML内容
             let htmlContent = document.documentElement.outerHTML;
             
-            // 创建锁定的设置对象
+            // 创建锁定的设置对象（包含新增的强制同桌规则）
             const lockedSettings = {
                 isLocked: true,
                 rowRestrictions: [...settings.rowRestrictions],
                 adjacentRestrictions: [...settings.adjacentRestrictions],
                 frontBackRestrictions: [...settings.frontBackRestrictions],
+                deskmateRestrictions: [...settings.deskmateRestrictions], // 新增
                 fixedSeats: [...settings.fixedSeats]
             };
             
@@ -1246,6 +1385,10 @@
             const saved = localStorage.getItem('seatGeneratorSettings');
             if (saved) {
                 settings = JSON.parse(saved);
+                // 兼容旧版本数据，添加缺失的强制同桌规则字段
+                if (!settings.deskmateRestrictions) {
+                    settings.deskmateRestrictions = [];
+                }
             }
         }
 
