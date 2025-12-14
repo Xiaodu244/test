@@ -1,7 +1,7 @@
 <html lang="zh-CN"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>随机座位生成器</title>
+    <title>随机座位生成器（</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.544.0/dist/umd/lucide.min.js"></script>
     <style>
@@ -63,6 +63,11 @@
         .seat:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .seat.deskmate {
+            background: linear-gradient(135deg, #34d399, #10b981);
+            color: white;
         }
         
         .controls {
@@ -386,12 +391,12 @@
                 </button>
             </div>
             <div class="time-display">
-                当前时间: <span id="currentTime">2025/12/14 18:10:31</span>
+                当前时间: <span id="currentTime">2025/12/14 22:45:56</span>
             </div>
         </div>
 
         <!-- Seat Grid -->
-        <div class="seat-container" id="seatContainer"><div class="seat">袁伟杰</div><div class="seat">黄戟</div><div class="seat">乔兰惠</div><div class="seat">邹谨羽</div><div class="seat">吴臻</div><div class="seat">郭文熙</div><div class="seat">李芷漩</div><div class="seat">梁洪滔</div><div class="seat">伏俊雯</div><div class="seat">黄文桢</div><div class="seat">陈俊池</div><div class="seat">张恒烨</div><div class="seat">何立林</div><div class="seat">蔡松阳</div><div class="seat">胡家源</div><div class="seat">常凯迪</div><div class="seat">潘丽烨</div><div class="seat">包博文</div><div class="seat">简文曦</div><div class="seat">田添</div><div class="seat">马梓铭</div><div class="seat">杨鹏航</div><div class="seat">何俊杰</div><div class="seat">谭诗蒙</div><div class="seat">谭力豪</div><div class="seat">陈芃锦</div><div class="seat">冯悠然</div><div class="seat">刘昱同</div><div class="seat">赵苓淇</div><div class="seat">龙泳希</div><div class="seat">高启航</div><div class="seat">王凡予</div><div class="seat">范邵凯</div><div class="seat">冉高越扬</div><div class="seat">邹雨成</div><div class="seat">杜泓骏</div><div class="seat">张元兮</div><div class="seat">陈觉熠</div><div class="seat">刘沛凝</div><div class="seat">秦梓航</div><div class="seat">潘慧妍</div><div class="seat">汪孝通</div><div class="seat">李广一</div><div class="seat">王一婷</div><div class="seat">王弘毅</div><div class="seat">张庭铭</div><div class="seat">何雨桀</div><div class="seat">陈俞霖</div><div class="seat fixed-seat">颜屿蘅</div><div class="seat fixed-seat">吴优</div><div class="seat">敖寅轩</div><div class="seat">王云翔</div><div class="seat">万承源</div><div class="seat">梁允泽</div><div class="seat">杨皓然</div><div class="seat">李弘毅</div></div>
+        <div class="seat-container" id="seatContainer"><div class="seat">何雨桀</div><div class="seat">梁洪滔</div><div class="seat">高启航</div><div class="seat">邹雨成</div><div class="seat">黄文桢</div><div class="seat">刘昱同</div><div class="seat">陈芃锦</div><div class="seat">张庭铭</div><div class="seat">张恒烨</div><div class="seat">黄戟</div><div class="seat">伏俊雯</div><div class="seat">范邵凯</div><div class="seat">汪孝通</div><div class="seat">何俊杰</div><div class="seat">胡家源</div><div class="seat">冯悠然</div><div class="seat">王一婷</div><div class="seat">杜泓骏</div><div class="seat">敖寅轩</div><div class="seat">谭力豪</div><div class="seat">何立林</div><div class="seat">杨皓然</div><div class="seat">杨鹏航</div><div class="seat">王弘毅</div><div class="seat">万承源</div><div class="seat">蔡松阳</div><div class="seat">李弘毅</div><div class="seat">李芷漩</div><div class="seat">马梓铭</div><div class="seat">谭诗蒙</div><div class="seat">田添</div><div class="seat">邹谨羽</div><div class="seat">潘丽烨</div><div class="seat">赵苓淇</div><div class="seat">简文曦</div><div class="seat">郭文熙</div><div class="seat">龙泳希</div><div class="seat">包博文</div><div class="seat">秦梓航</div><div class="seat">王云翔</div><div class="seat">梁允泽</div><div class="seat">吴臻</div><div class="seat">袁伟杰</div><div class="seat">陈觉熠</div><div class="seat">陈俞霖</div><div class="seat">李广一</div><div class="seat">张元兮</div><div class="seat">刘沛凝</div><div class="seat fixed-seat">吴优</div><div class="seat fixed-seat">颜屿蘅</div><div class="seat">王凡予</div><div class="seat">陈俊池</div><div class="seat">常凯迪</div><div class="seat">潘慧妍</div><div class="seat">冉高越扬</div><div class="seat">乔兰惠</div></div>
     </div>
 
     <!-- History Modal -->
@@ -495,10 +500,7 @@
                             <option value="敖寅轩">敖寅轩</option><option value="包博文">包博文</option><option value="蔡松阳">蔡松阳</option><option value="常凯迪">常凯迪</option><option value="陈觉熠">陈觉熠</option><option value="陈俊池">陈俊池</option><option value="陈芃锦">陈芃锦</option><option value="陈俞霖">陈俞霖</option><option value="杜泓骏">杜泓骏</option><option value="范邵凯">范邵凯</option><option value="冯悠然">冯悠然</option><option value="伏俊雯">伏俊雯</option><option value="高启航">高启航</option><option value="郭文熙">郭文熙</option><option value="何俊杰">何俊杰</option><option value="何立林">何立林</option><option value="何雨桀">何雨桀</option><option value="胡家源">胡家源</option><option value="黄戟">黄戟</option><option value="黄文桢">黄文桢</option><option value="简文曦">简文曦</option><option value="李广一">李广一</option><option value="李弘毅">李弘毅</option><option value="李芷漩">李芷漩</option><option value="梁洪滔">梁洪滔</option><option value="梁允泽">梁允泽</option><option value="刘沛凝">刘沛凝</option><option value="刘昱同">刘昱同</option><option value="龙泳希">龙泳希</option><option value="马梓铭">马梓铭</option><option value="潘慧妍">潘慧妍</option><option value="潘丽烨">潘丽烨</option><option value="乔兰惠">乔兰惠</option><option value="秦梓航">秦梓航</option><option value="冉高越扬">冉高越扬</option><option value="谭力豪">谭力豪</option><option value="谭诗蒙">谭诗蒙</option><option value="田添">田添</option><option value="万承源">万承源</option><option value="汪孝通">汪孝通</option><option value="王凡予">王凡予</option><option value="王弘毅">王弘毅</option><option value="王一婷">王一婷</option><option value="王云翔">王云翔</option><option value="吴优">吴优</option><option value="吴臻">吴臻</option><option value="颜屿蘅">颜屿蘅</option><option value="杨皓然">杨皓然</option><option value="杨鹏航">杨鹏航</option><option value="袁伟杰">袁伟杰</option><option value="张恒烨">张恒烨</option><option value="张庭铭">张庭铭</option><option value="张元兮">张元兮</option><option value="赵苓淇">赵苓淇</option><option value="邹谨羽">邹谨羽</option><option value="邹雨成">邹雨成</option></select>
                         </div>
                         <button class="add-restriction-btn" onclick="addDeskmateRestriction()">添加强制同桌</button>
-                        <div id="deskmateRestrictionList" class="restriction-list"><div class="restriction-item">
-                        <span>包博文 和 潘丽烨 必须坐同桌</span>
-                        <button class="remove-btn" onclick="removeDeskmateRestriction(0)">删除</button>
-                    </div></div>
+                        <div id="deskmateRestrictionList" class="restriction-list"></div>
                     </div>
 
                     <!-- 固定座位设置 -->
@@ -507,12 +509,12 @@
                         <select id="fixedSeatStudent" class="student-selector">
                             <option value="">选择学生</option>
                         <option value="敖寅轩">敖寅轩</option><option value="包博文">包博文</option><option value="蔡松阳">蔡松阳</option><option value="常凯迪">常凯迪</option><option value="陈觉熠">陈觉熠</option><option value="陈俊池">陈俊池</option><option value="陈芃锦">陈芃锦</option><option value="陈俞霖">陈俞霖</option><option value="杜泓骏">杜泓骏</option><option value="范邵凯">范邵凯</option><option value="冯悠然">冯悠然</option><option value="伏俊雯">伏俊雯</option><option value="高启航">高启航</option><option value="郭文熙">郭文熙</option><option value="何俊杰">何俊杰</option><option value="何立林">何立林</option><option value="何雨桀">何雨桀</option><option value="胡家源">胡家源</option><option value="黄戟">黄戟</option><option value="黄文桢">黄文桢</option><option value="简文曦">简文曦</option><option value="李广一">李广一</option><option value="李弘毅">李弘毅</option><option value="李芷漩">李芷漩</option><option value="梁洪滔">梁洪滔</option><option value="梁允泽">梁允泽</option><option value="刘沛凝">刘沛凝</option><option value="刘昱同">刘昱同</option><option value="龙泳希">龙泳希</option><option value="马梓铭">马梓铭</option><option value="潘慧妍">潘慧妍</option><option value="潘丽烨">潘丽烨</option><option value="乔兰惠">乔兰惠</option><option value="秦梓航">秦梓航</option><option value="冉高越扬">冉高越扬</option><option value="谭力豪">谭力豪</option><option value="谭诗蒙">谭诗蒙</option><option value="田添">田添</option><option value="万承源">万承源</option><option value="汪孝通">汪孝通</option><option value="王凡予">王凡予</option><option value="王弘毅">王弘毅</option><option value="王一婷">王一婷</option><option value="王云翔">王云翔</option><option value="吴优">吴优</option><option value="吴臻">吴臻</option><option value="颜屿蘅">颜屿蘅</option><option value="杨皓然">杨皓然</option><option value="杨鹏航">杨鹏航</option><option value="袁伟杰">袁伟杰</option><option value="张恒烨">张恒烨</option><option value="张庭铭">张庭铭</option><option value="张元兮">张元兮</option><option value="赵苓淇">赵苓淇</option><option value="邹谨羽">邹谨羽</option><option value="邹雨成">邹雨成</option></select>
-                        <div id="fixedSeatGrid" class="fixed-seat-grid"><div class="fixed-seat-item" data-position="0">1行1列</div><div class="fixed-seat-item" data-position="1">1行2列</div><div class="fixed-seat-item" data-position="2">1行3列</div><div class="fixed-seat-item" data-position="3">1行4列</div><div class="fixed-seat-item" data-position="4">1行5列</div><div class="fixed-seat-item" data-position="5">1行6列</div><div class="fixed-seat-item" data-position="6">1行7列</div><div class="fixed-seat-item" data-position="7">1行8列</div><div class="fixed-seat-item" data-position="8">2行1列</div><div class="fixed-seat-item" data-position="9">2行2列</div><div class="fixed-seat-item" data-position="10">2行3列</div><div class="fixed-seat-item" data-position="11">2行4列</div><div class="fixed-seat-item" data-position="12">2行5列</div><div class="fixed-seat-item" data-position="13">2行6列</div><div class="fixed-seat-item" data-position="14">2行7列</div><div class="fixed-seat-item" data-position="15">2行8列</div><div class="fixed-seat-item" data-position="16">3行1列</div><div class="fixed-seat-item" data-position="17">3行2列</div><div class="fixed-seat-item" data-position="18">3行3列</div><div class="fixed-seat-item" data-position="19">3行4列</div><div class="fixed-seat-item" data-position="20">3行5列</div><div class="fixed-seat-item" data-position="21">3行6列</div><div class="fixed-seat-item" data-position="22">3行7列</div><div class="fixed-seat-item" data-position="23">3行8列</div><div class="fixed-seat-item" data-position="24">4行1列</div><div class="fixed-seat-item" data-position="25">4行2列</div><div class="fixed-seat-item" data-position="26">4行3列</div><div class="fixed-seat-item" data-position="27">4行4列</div><div class="fixed-seat-item" data-position="28">4行5列</div><div class="fixed-seat-item" data-position="29">4行6列</div><div class="fixed-seat-item" data-position="30">4行7列</div><div class="fixed-seat-item" data-position="31">4行8列</div><div class="fixed-seat-item" data-position="32">5行1列</div><div class="fixed-seat-item" data-position="33">5行2列</div><div class="fixed-seat-item" data-position="34">5行3列</div><div class="fixed-seat-item" data-position="35">5行4列</div><div class="fixed-seat-item" data-position="36">5行5列</div><div class="fixed-seat-item" data-position="37">5行6列</div><div class="fixed-seat-item" data-position="38">5行7列</div><div class="fixed-seat-item" data-position="39">5行8列</div><div class="fixed-seat-item" data-position="40">6行1列</div><div class="fixed-seat-item" data-position="41">6行2列</div><div class="fixed-seat-item" data-position="42">6行3列</div><div class="fixed-seat-item" data-position="43">6行4列</div><div class="fixed-seat-item" data-position="44">6行5列</div><div class="fixed-seat-item" data-position="45">6行6列</div><div class="fixed-seat-item" data-position="46">6行7列</div><div class="fixed-seat-item" data-position="47">6行8列</div><div class="fixed-seat-item active" data-position="48">颜屿蘅</div><div class="fixed-seat-item active" data-position="49">吴优</div><div class="fixed-seat-item" data-position="50">7行3列</div><div class="fixed-seat-item" data-position="51">7行4列</div><div class="fixed-seat-item" data-position="52">7行5列</div><div class="fixed-seat-item" data-position="53">7行6列</div><div class="fixed-seat-item" data-position="54">7行7列</div><div class="fixed-seat-item" data-position="55">7行8列</div></div>
+                        <div id="fixedSeatGrid" class="fixed-seat-grid"><div class="fixed-seat-item" data-position="0">1行1列</div><div class="fixed-seat-item" data-position="1">1行2列</div><div class="fixed-seat-item" data-position="2">1行3列</div><div class="fixed-seat-item" data-position="3">1行4列</div><div class="fixed-seat-item" data-position="4">1行5列</div><div class="fixed-seat-item" data-position="5">1行6列</div><div class="fixed-seat-item" data-position="6">1行7列</div><div class="fixed-seat-item" data-position="7">1行8列</div><div class="fixed-seat-item" data-position="8">2行1列</div><div class="fixed-seat-item" data-position="9">2行2列</div><div class="fixed-seat-item" data-position="10">2行3列</div><div class="fixed-seat-item" data-position="11">2行4列</div><div class="fixed-seat-item" data-position="12">2行5列</div><div class="fixed-seat-item" data-position="13">2行6列</div><div class="fixed-seat-item" data-position="14">2行7列</div><div class="fixed-seat-item" data-position="15">2行8列</div><div class="fixed-seat-item" data-position="16">3行1列</div><div class="fixed-seat-item" data-position="17">3行2列</div><div class="fixed-seat-item" data-position="18">3行3列</div><div class="fixed-seat-item" data-position="19">3行4列</div><div class="fixed-seat-item" data-position="20">3行5列</div><div class="fixed-seat-item" data-position="21">3行6列</div><div class="fixed-seat-item" data-position="22">3行7列</div><div class="fixed-seat-item" data-position="23">3行8列</div><div class="fixed-seat-item" data-position="24">4行1列</div><div class="fixed-seat-item" data-position="25">4行2列</div><div class="fixed-seat-item" data-position="26">4行3列</div><div class="fixed-seat-item" data-position="27">4行4列</div><div class="fixed-seat-item" data-position="28">4行5列</div><div class="fixed-seat-item" data-position="29">4行6列</div><div class="fixed-seat-item" data-position="30">4行7列</div><div class="fixed-seat-item" data-position="31">4行8列</div><div class="fixed-seat-item" data-position="32">5行1列</div><div class="fixed-seat-item" data-position="33">5行2列</div><div class="fixed-seat-item" data-position="34">5行3列</div><div class="fixed-seat-item" data-position="35">5行4列</div><div class="fixed-seat-item" data-position="36">5行5列</div><div class="fixed-seat-item" data-position="37">5行6列</div><div class="fixed-seat-item" data-position="38">5行7列</div><div class="fixed-seat-item" data-position="39">5行8列</div><div class="fixed-seat-item" data-position="40">6行1列</div><div class="fixed-seat-item" data-position="41">6行2列</div><div class="fixed-seat-item" data-position="42">6行3列</div><div class="fixed-seat-item" data-position="43">6行4列</div><div class="fixed-seat-item" data-position="44">6行5列</div><div class="fixed-seat-item" data-position="45">6行6列</div><div class="fixed-seat-item" data-position="46">6行7列</div><div class="fixed-seat-item" data-position="47">6行8列</div><div class="fixed-seat-item active" data-position="48">吴优</div><div class="fixed-seat-item active" data-position="49">颜屿蘅</div><div class="fixed-seat-item" data-position="50">7行3列</div><div class="fixed-seat-item" data-position="51">7行4列</div><div class="fixed-seat-item" data-position="52">7行5列</div><div class="fixed-seat-item" data-position="53">7行6列</div><div class="fixed-seat-item" data-position="54">7行7列</div><div class="fixed-seat-item" data-position="55">7行8列</div></div>
                         <div id="fixedSeatList" class="restriction-list"><div class="restriction-item">
-                        <span>吴优 固定在7行2列</span>
+                        <span>吴优 固定在7行1列</span>
                         <button class="remove-btn" onclick="removeFixedSeat(0)">删除</button>
                     </div><div class="restriction-item">
-                        <span>颜屿蘅 固定在7行1列</span>
+                        <span>颜屿蘅 固定在7行2列</span>
                         <button class="remove-btn" onclick="removeFixedSeat(1)">删除</button>
                     </div></div>
                     </div>
@@ -562,20 +564,15 @@
     "rowRestrictions": [],
     "adjacentRestrictions": [],
     "frontBackRestrictions": [],
-    "deskmateRestrictions": [
-        {
-            "student1": "包博文",
-            "student2": "潘丽烨"
-        }
-    ],
+    "deskmateRestrictions": [],
     "fixedSeats": [
         {
             "student": "吴优",
-            "position": 49
+            "position": 48
         },
         {
             "student": "颜屿蘅",
-            "position": 48
+            "position": 49
         }
     ]
 };
@@ -1157,18 +1154,30 @@
             return false; // 符合限制
         }
 
-        // 渲染座位（移除同桌标记，仅保留固定座位标记）
+        // 渲染座位（新增同桌标记）
         function renderSeats() {
             const container = document.getElementById('seatContainer');
             container.innerHTML = '';
+
+            // 收集所有同桌学生
+            const deskmateStudentSet = new Set();
+            settings.deskmateRestrictions.forEach(pair => {
+                deskmateStudentSet.add(pair.student1);
+                deskmateStudentSet.add(pair.student2);
+            });
 
             currentSeats.forEach((student, index) => {
                 const seat = document.createElement('div');
                 seat.className = 'seat';
                 
-                // 仅标记固定座位
+                // 标记固定座位
                 if (settings.fixedSeats.some(f => f.position === index)) {
                     seat.classList.add('fixed-seat');
+                }
+                
+                // 标记同桌学生
+                if (student && deskmateStudentSet.has(student)) {
+                    seat.classList.add('deskmate');
                 }
                 
                 seat.textContent = student || '';
